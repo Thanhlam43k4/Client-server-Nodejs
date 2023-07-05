@@ -8,8 +8,6 @@ app.use(express.json())
 
 let db;
 
-
-
 connectToDb((err) => {
     if (!err) {
         //app listen request at port : 3000
@@ -19,10 +17,6 @@ connectToDb((err) => {
         db = getDb()
     }
 });
-
-
-
-
 
 //routes
 app.get('/books', (req, res) => {
@@ -41,8 +35,6 @@ app.get('/books', (req, res) => {
    
 });
 
-
-
 app.get('/authors',(req,res) =>{
     let author = [];
     db.collection('authors')
@@ -57,7 +49,6 @@ app.get('/authors',(req,res) =>{
             res.status(500).json('Could not fetch the document!!!!');
         })
     })
-
  app.get('/books/:id',(req,res) =>{
     if (ObjectId.isValid(req.params.id)) {
 
@@ -75,8 +66,6 @@ app.get('/authors',(req,res) =>{
       }
     })
 //Post request
-
-
 app.post('/books',(req,res) =>{
     const book = req.body
     db.collection('books')
